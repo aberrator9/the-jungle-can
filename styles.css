@@ -1,0 +1,61 @@
+html, body {
+  height: 100%;
+}
+
+p,
+blockquote {
+  margin: 0, 2rem;
+  margin-bottom: 3rem;
+  font-size: 2.4vw;
+  font-family: 'Cormorant Garamond', serif;
+  background: transparent;
+}
+
+a {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2vw;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  margin: 3rem 4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.left-col {
+  /* border: 1px solid green; */
+  flex-basis: 25%;
+  flex-grow: 1;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.right-col {
+  /* border: 1px solid green; */
+  flex-basis: 70%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+@media (orientation: portrait) {
+  .flex-container {
+    gap: 4em;
+  }
+
+  .right-col {
+    flex-basis: 100%;
+  }
+
+  p,
+  blockquote {
+    font-size: 4vw;
+  }
+
+  a {
+    font-size: 4vw;
+  }
+}

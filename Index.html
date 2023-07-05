@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Jungle Can't Happen Here in Wonderland</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="left-col">
+            <img src="img/title_no_border.png" alt="The Jungle Can't Happen Here In Wonderland"
+                style="max-width: 100%;">
+            <img src="img/authors.gif" alt="" style="max-width: 100%;">
+            <a href="about.html">About</a>
+            <button class="btn btn-success" id="generate-button">Generate</button>
+            <button id="dark-mode-toggle">Light mode</button>
+        </div>
+        <div class="right-col">
+            <blockquote id="jungle-quote" cite="https://en.wikipedia.org/wiki/The_Jungle">
+                JungleString
+            </blockquote>
+            <blockquote id="happen-quote" cite="https://en.wikipedia.org/wiki/It_Can%27t_Happen_Here">
+                HappenString
+            </blockquote>
+            <blockquote id="wonderland-quote" cite="https://en.wikipedia.org/wiki/Alice%27s_Adventures_in_Wonderland">
+                WonderlandString
+            </blockquote>
+
+        </div>
+    </div>
+
+    <script src="parser.js" async defer></script>
+    <script src="theme.js" async defer></script>
+</body>
+
+</html>
