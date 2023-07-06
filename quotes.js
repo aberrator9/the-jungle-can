@@ -6,26 +6,11 @@ const generateButton = document.getElementById("generate-button");
 
 async function getQuotes() {
     try {
-        const jungle = await getQuoteSingle("jungle");
-        jungleQuote.innerHTML = jungle;
-
-        const happen = await getQuoteSingle("happen");
-        happenQuote.innerHTML = happen;
-
-        const wonderland = await getQuoteSingle("wonderland");
-        wonderlandQuote.innerHTML = wonderland;
-    } catch (e) {
-        console.log('Error:', e);
-    }
-}
-
-async function getQuoteSingle(name) {
-    try {
-        const response = await fetch(`./data/${name}.json`);
+        const response = await fetch(`./data/quotes.json`);
         const data = await response.json();
-        const quotes = data.Strings;
-        const randomQuote = data.Strings[Math.floor(Math.random() * quotes.length)];
-        return randomQuote;
+        jungleQuote.innerHTML = data.jungle[Math.floor(Math.random() * data.jungle.length)];;
+        happenQuote.innerHTML = data.happen[Math.floor(Math.random() * data.happen.length)];
+        wonderlandQuote.innerHTML = data.wonderland[Math.floor(Math.random() * data.wonderland.length)];
     } catch (e) {
         console.log('Error:', e);
         throw e;
