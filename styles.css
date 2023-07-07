@@ -1,6 +1,23 @@
+:root {
+  --light-bg: #e9ddc6;
+  --light-text: #2b2b2b;
+
+  --dark-bg: #2b2b2b;
+  --dark-text: #e7e7e7;
+}
+
 html,
 body {
   height: 100%;
+  margin: 0;
+
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+body.dark-theme {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
 }
 
 .bg-img {
@@ -13,7 +30,13 @@ body {
   mix-blend-mode: multiply;
 }
 
+#title {
+  margin: 0;
+  size: 100%;
+}
+
 #clock {
+  top: 25%;
   right: 0;
   rotate: -45deg;
   transform: translate(50%, -10%);
@@ -27,7 +50,7 @@ p,
 blockquote {
   margin: 0, 2rem;
   margin-bottom: 3rem;
-  font-size: 2.4vw;
+  font-size: 2rem;
   font-family: 'Cormorant Garamond', serif;
   background: transparent;
 }
@@ -40,7 +63,7 @@ a {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 5%;
+  gap: 4%;
   margin: 3rem 4rem;
   position: absolute;
   top: 0;
@@ -48,14 +71,14 @@ a {
 }
 
 .left-col {
-  flex-basis: 25%;
+  flex-basis: 30%;
   flex-grow: 1;
   flex-shrink: 0;
   text-align: left;
 }
 
 .right-col {
-  flex-basis: 70%;
+  flex-basis: 60%;
   flex-grow: 1;
   flex-shrink: 1;
 }
@@ -108,15 +131,20 @@ button:hover {
     flex-basis: 100%;
   }
 
-  .btn {
-    height: 4rem;
-    width: 4rem;
-    margin: 1.5rem;
+  .buttons {
+    margin: 1rem 0;
+  }
+
+  button {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: 0.2rem;
     opacity: 100%;
   }
 
   p,
   blockquote {
+    margin-top: 0;
     font-size: 4vw;
   }
 
@@ -125,11 +153,8 @@ button:hover {
   }
 
   #clock {
-    bottom: 0;
-    transform: translate(50%, 0%);
-    -webkit-transform: translate(50%, 0%);
-    -moz-transform: translate(50%, 0%);
-    -ms-transform: translate(50%, 0%);
-    -o-transform: translate(50%, 0%);
+    position: absolute;
+    top: 5%;
+    transform: translate(50%, 0%) scale(110%);
   }
 }
