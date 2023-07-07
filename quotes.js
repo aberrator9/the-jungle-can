@@ -16,5 +16,5 @@ async function getQuotes() {
         throw e;
     }
 }
-
+document.body.onclick = () => getQuotes();
 generateButton.onclick = () => getQuotes();

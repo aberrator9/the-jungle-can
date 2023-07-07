@@ -19,11 +19,9 @@ function setTheme(toggle) {
     }
 
     if (darkMode) {
-        darkModeToggle.textContent = "Light mode";
         document.body.style.backgroundColor = darkBG;
         document.body.style.color = darkText;
     } else {
-        darkModeToggle.textContent = "Dark mode";
         document.body.style.backgroundColor = lightBG;
         document.body.style.color = lightText;
     }

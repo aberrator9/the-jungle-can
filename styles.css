@@ -1,5 +1,26 @@
-html, body {
+html,
+body {
   height: 100%;
+}
+
+.bg-img {
+  position: fixed;
+  opacity: 15%;
+  pointer-events: none;
+}
+
+.mult {
+  mix-blend-mode: multiply;
+}
+
+#clock {
+  right: 0;
+  rotate: -45deg;
+  transform: translate(50%, -10%);
+  -webkit-transform: translate(50%, -10%);
+  -moz-transform: translate(50%, -10%);
+  -ms-transform: translate(50%, -10%);
+  -o-transform: translate(50%, -10%);
 }
 
 p,
@@ -27,7 +48,6 @@ a {
 }
 
 .left-col {
-  /* border: 1px solid green; */
   flex-basis: 25%;
   flex-grow: 1;
   flex-shrink: 0;
@@ -35,19 +55,64 @@ a {
 }
 
 .right-col {
-  /* border: 1px solid green; */
   flex-basis: 70%;
   flex-grow: 1;
   flex-shrink: 1;
 }
 
+.buttons {
+  margin: 2rem 0;
+}
+
+button {
+  height: 2.2rem;
+  width: 2.2rem;
+  padding: 0;
+  opacity: 80%;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+button:hover {
+  opacity: 100%;
+  padding: 0;
+}
+
+.btn-img {
+  padding: 0;
+  width: 110%;
+  height: 110px;
+}
+
 @media (orientation: portrait) {
+
+  html {
+    /* Stops background from rendering as white in portrait */
+    background-color: transparent;
+  }
+
+  .left-col {
+    text-align: center;
+  }
+
   .flex-container {
     gap: 4em;
   }
 
   .right-col {
     flex-basis: 100%;
+  }
+
+  .btn {
+    height: 4rem;
+    width: 4rem;
+    margin: 1.5rem;
+    opacity: 100%;
   }
 
   p,
@@ -57,5 +122,14 @@ a {
 
   a {
     font-size: 4vw;
+  }
+
+  #clock {
+    bottom: 0;
+    transform: translate(50%, 0%);
+    -webkit-transform: translate(50%, 0%);
+    -moz-transform: translate(50%, 0%);
+    -ms-transform: translate(50%, 0%);
+    -o-transform: translate(50%, 0%);
   }
 }
