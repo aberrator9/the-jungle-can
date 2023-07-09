@@ -21,6 +21,7 @@ body {
   background-size: cover, contain;
   background-position: center, right bottom;
   background-repeat: no-repeat, no-repeat;
+  font-family: 'Cormorant Garamond', serif;
   /* border: 10px solid orange; */
 }
 
@@ -50,7 +51,7 @@ svg.dark-theme {
 }
 
 #clock {
-  top: 25%;
+  top: 25vh;
   right: 0;
   rotate: -45deg;
   transform: translate(50%, -10%);
@@ -60,25 +61,36 @@ svg.dark-theme {
   -o-transform: translate(50%, -10%);
 }
 
+p,
 blockquote {
   margin: 1rem;
   margin-bottom: 3rem;
   font-size: 2.2vw;
-  font-family: 'Cormorant Garamond', serif;
   background: transparent;
 }
 
 a {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 2vw;
+  text-decoration: none;
+}
+
+footer p,
+footer a {
+  font-size: 1rem;
 }
 
 footer {
-  bottom: 1%;
-  margin-top: auto;
-  padding-left: 2rem;
+  display: inline-flex;
+  height: 2rem;
+  padding: 0;
+  margin: auto 0 1rem 0;
   width: 100%;
   /* border: 1px solid yellowgreen; */
+}
+
+.footer-right {
+  display: flex;
+  right: 0;
+  margin: 0 2rem 0 auto;
 }
 
 .flex-container {
