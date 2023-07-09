@@ -6,18 +6,37 @@
   --dark-text: #e7e7e7;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
+html {
+  width: 100%;
+  position: absolute;
+  background-color: transparent;
+  /* border: 10px solid red; */
+}
 
-  background-color: var(--light-bg);
-  color: var(--light-text);
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--light-bg);
+  background-size: cover, contain;
+  background-position: center, right bottom;
+  background-repeat: no-repeat, no-repeat;
+  /* border: 10px solid orange; */
 }
 
 body.dark-theme {
-  background-color: var(--dark-bg);
+  background: var(--dark-bg);
   color: var(--dark-text);
+}
+
+svg {
+  fill: var(--light-text);
+  width: 100%;
+  /* border: 1px solid red; */
+}
+
+svg.dark-theme {
+  fill: var(--dark-text);
 }
 
 .bg-img {
@@ -26,13 +45,8 @@ body.dark-theme {
   pointer-events: none;
 }
 
-.mult {
-  mix-blend-mode: multiply;
-}
-
 #title {
-  margin: 0;
-  width: 50%;
+  height: auto;
 }
 
 #clock {
@@ -46,8 +60,8 @@ body.dark-theme {
   -o-transform: translate(50%, -10%);
 }
 
-p,
 blockquote {
+  margin: 1rem;
   margin-bottom: 3rem;
   font-size: 2.2vw;
   font-family: 'Cormorant Garamond', serif;
@@ -59,17 +73,26 @@ a {
   font-size: 2vw;
 }
 
+footer {
+  bottom: 1%;
+  margin-top: auto;
+  padding-left: 2rem;
+  width: 100%;
+  /* border: 1px solid yellowgreen; */
+}
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
   gap: 4%;
-  margin: 3rem 4rem;
-  position: absolute;
+  margin: 2rem 3rem;
   top: 0;
   left: 0;
+  /* flex-wrap: wrap-reverse; */
 }
 
 .left-col {
+  /* border: 1px solid green; */
   flex-basis: 30%;
   flex-grow: 1;
   flex-shrink: 0;
@@ -77,13 +100,15 @@ a {
 }
 
 .right-col {
+  /* border: 1px solid green; */
   flex-basis: 60%;
   flex-grow: 1;
   flex-shrink: 1;
 }
 
-.buttons {
+.buttons-container {
   margin: 2rem 0;
+  text-align: center;
 }
 
 button {
@@ -100,24 +125,18 @@ button {
   -o-border-radius: 50%;
 }
 
+.btn-img {
+  padding: 0;
+  height: auto;
+  width: 100%;
+}
+
 button:hover {
   opacity: 100%;
   padding: 0;
 }
 
-.btn-img {
-  padding: 0;
-  width: 110%;
-  height: 110px;
-}
-
 @media (orientation: portrait) {
-
-  html {
-    /* Stops background from rendering as white in portrait */
-    background-color: transparent;
-  }
-
   .left-col {
     text-align: center;
   }
@@ -144,16 +163,16 @@ button:hover {
   p,
   blockquote {
     margin-top: 0;
-    font-size: 4vw;
+    font-size: 4.2vw;
   }
 
   a {
-    font-size: 4vw;
+    font-size: 4.2vw;
   }
 
   #clock {
     position: absolute;
-    top: 5%;
+    top: 4rem;
     transform: translate(50%, 0%) scale(110%);
   }
 }
