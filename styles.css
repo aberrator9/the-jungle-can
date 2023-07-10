@@ -39,13 +39,25 @@ body.dark-theme {
   color: var(--dark-text);
 }
 
+p,
+blockquote {
+  margin: 1rem;
+  margin-bottom: 3rem;
+  font-size: 2.2vw;
+  background: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+
 svg {
   fill: var(--light-text);
   width: 100%;
   border: 1px solid red;
 }
 
-svg.dark-theme {
+.dark-theme svg {
   fill: var(--dark-text);
 }
 
@@ -77,18 +89,6 @@ svg.dark-theme {
   -moz-transform: translate(50%, -10%);
   -ms-transform: translate(50%, -10%);
   -o-transform: translate(50%, -10%);
-}
-
-p,
-blockquote {
-  margin: 1rem;
-  margin-bottom: 3rem;
-  font-size: 2.2vw;
-  background: transparent;
-}
-
-a {
-  text-decoration: none;
 }
 
 footer {
