@@ -2,7 +2,7 @@ const jungleQuote = document.getElementById("jungle-quote");
 const happenQuote = document.getElementById("happen-quote");
 const wonderlandQuote = document.getElementById("wonderland-quote");
 
-const generateButton = document.getElementById("generate-button");
+// const generateButton = document.getElementById("generate-button");
 
 async function getQuotes() {
     try {
@@ -16,5 +16,6 @@ async function getQuotes() {
         throw e;
     }
 }
+
 document.body.onclick = () => getQuotes();
-generateButton.onclick = () => getQuotes();
+// generateButton.onclick = () => getQuotes();

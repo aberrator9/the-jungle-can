@@ -10,7 +10,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  /* max-width: 100%; */
   overflow-x: hidden;
   overflow-y: scroll;
   min-height: 100%;
@@ -39,7 +38,6 @@ body.dark-theme {
   color: var(--dark-text);
 }
 
-p,
 blockquote {
   margin: 1rem;
   margin-bottom: 3rem;
@@ -84,20 +82,18 @@ svg {
   top: 25vh;
   right: 0;
   rotate: -45deg;
-  transform: translate(50%, -10%);
   -webkit-transform: translate(50%, -10%);
   -moz-transform: translate(50%, -10%);
   -ms-transform: translate(50%, -10%);
   -o-transform: translate(50%, -10%);
+  transform: translate(50%, -10%);
 }
 
 footer {
   display: inline-flex;
   height: 2rem;
   margin: auto 1rem 1rem 1rem;
-  max-width: 100%;
   border: 1px solid yellowgreen;
-
 }
 
 footer p,
@@ -153,11 +149,11 @@ button {
   opacity: 80%;
   background-color: transparent;
   border: none;
-  border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+  border-radius: 50%;
 }
 
 .btn-img {
@@ -183,7 +179,6 @@ button:hover {
   .buttons-container {
     margin-top: 3rem;
     margin-bottom: 0;
-    ;
   }
 
   button {
