@@ -4,7 +4,7 @@ const darkThemePreferred = window.matchMedia && window.matchMedia('(prefers-colo
 darkThemePreferred.addEventListener('change', e => setTheme(e.matches));
 
 function init() {
-    if ((localStorage.theme === undefined && darkThemePreferred.matches)
+    if ((!localStorage.theme && darkThemePreferred.matches)
         || localStorage.theme === "dark") {
         toggleTheme();
     }
@@ -26,4 +26,5 @@ function setTheme(matches) {
 }
 
 themeToggle.onclick = toggleTheme;
+
 init();
