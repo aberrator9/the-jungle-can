@@ -1,10 +1,10 @@
 const jungleQuote = document.getElementById("jungle-quote");
 const happenQuote = document.getElementById("happen-quote");
 const wonderlandQuote = document.getElementById("wonderland-quote");
-// const generateButton = document.getElementById("generate-button");
+const generateButton = document.getElementById("generate-button");
 
 function init() {
-    if (!localStorage.quote1) {
+    if (localStorage.quote1 === undefined) {
         getQuotes();
     } else {
         jungleQuote.innerHTML = localStorage.quote1;
@@ -27,7 +27,14 @@ async function getQuotes() {
     }
 }
 
-document.body.onclick = getQuotes;
-// generateButton.onclick = () => getQuotes();
+function scrollToTop() {
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'auto'
+    });
+}
+
+generateButton.onclick = getQuotes && scrollToTop;
 
 init();

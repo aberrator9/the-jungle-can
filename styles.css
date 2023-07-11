@@ -6,20 +6,19 @@
   --dark-text: #e7e7e7;
 }
 
+html {
+  background-color: transparent;
+  overflow-x: hidden;
+  /* border: 2px solid red; */
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
   min-height: 100%;
   height: 100%;
   width: 100%;
-}
-
-html {
-  background-color: transparent;
-  /* border: 2px solid red; */
 }
 
 body {
@@ -82,40 +81,13 @@ svg {
   top: 25vh;
   right: 0;
   rotate: -45deg;
-  -webkit-transform: translate(50%, -10%);
-  -moz-transform: translate(50%, -10%);
-  -ms-transform: translate(50%, -10%);
-  -o-transform: translate(50%, -10%);
-  transform: translate(50%, -10%);
+  transform: translate(50%, -10%), rotate(-45deg);
 }
 
-footer {
-  display: inline-flex;
-  height: 2rem;
-  margin: auto 1rem 1rem 1rem;
-  /* border: 1px solid yellowgreen; */
-}
-
-footer p,
-footer a {
-  font-size: 1rem;
-}
-
-.footer-right {
-  display: flex;
-  align-items: center;
-  right: 0;
-  margin: 0 2rem 0 auto;
-}
-
-#kofi {
-  width: auto !important;
-}
-
-.flex-container {
+.flex-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 4%;
+  gap: 5%;
   margin: 2rem 3rem;
   top: 0;
   left: 0;
@@ -138,22 +110,55 @@ footer a {
 }
 
 .buttons-container {
-  margin: 2rem 0;
+  margin: 3rem;
+  display: flexbox;
+  align-items: center;
+  gap: 2rem;
   text-align: center;
+  /* border: 1px solid purple; */
+}
+
+#theme-toggle {
+  width: 3rem;
+}
+
+#generate {
+  margin-left: 1rem;
+  height: auto;
+  width: 3rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 button {
-  height: 2.2rem;
-  width: 2.2rem;
   padding: 0;
   opacity: 80%;
   background-color: transparent;
   border: none;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
   border-radius: 50%;
+}
+
+button:hover {
+  opacity: 100%;
+}
+
+.btn-pop {
+  cursor: pointer;
+  transform: scale(100%);
+  transition: ease-out 0.1s;
+}
+
+.btn-pop:hover {
+  transform: scale(120%);
+  transform: rotate(-90deg);
+}
+
+.btn-pop:active {
+  transform: scale(105%);
 }
 
 .btn-img {
@@ -162,14 +167,31 @@ button {
   width: 100%;
 }
 
-button:hover {
-  opacity: 100%;
-  padding: 0;
+footer {
+  display: inline-flex;
+  height: 2rem;
+  margin: auto 1rem 1rem 2rem;
+}
+
+footer p,
+footer a {
+  font-size: 1rem;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  right: 0;
+  margin: 0 0 0 auto;
+}
+
+#kofi {
+  width: auto;
 }
 
 @media (orientation: portrait) {
-  .flex-container {
-    gap: 4em;
+  .flex-wrapper {
+    margin: 3rem 3rem;
   }
 
   .right-col {
@@ -177,8 +199,7 @@ button:hover {
   }
 
   .buttons-container {
-    margin-top: 3rem;
-    margin-bottom: 0;
+    margin: 4rem;
   }
 
   button {
