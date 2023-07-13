@@ -79,7 +79,7 @@ svg {
 
 #title {
   height: auto;
-  max-width: 90%;
+  max-width: 80%;
 }
 
 #clock {
@@ -168,7 +168,7 @@ svg {
   background: linear-gradient(159deg, rgb(73, 73, 73), rgb(14, 14, 14));
   background-size: 400% 400%;
 
-  -webkit-animation: Breathe 1s ease infinite;
+  -webkit-animation: Breathe 12sease infinite;
   animation: Breathe 2s ease infinite;
 }
 
