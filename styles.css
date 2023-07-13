@@ -84,11 +84,11 @@ svg {
 
 #clock {
   top: 25vh;
-  right: 0;
+  right: -20%;
   rotate: -45deg;
   -webkit-transform: translate(50%, -10%), rotate(-45deg);
   -ms-transform: translate(50%, -10%), rotate(-45deg);
-  transform: translate(50%, -10%), rotate(-45deg);
+  transform: translate(50%, -20%), rotate(-45deg);
 }
 
 .flex-wrapper {
@@ -165,6 +165,7 @@ svg {
   z-index: 9;
 
   background: -o-linear-gradient(291deg, var(--dark-text), #0037ff);
+  background: -o-linear-gradient(291deg, rgb(73, 73, 73), rgb(14, 14, 14));
   background: linear-gradient(159deg, rgb(73, 73, 73), rgb(14, 14, 14));
   background-size: 400% 400%;
 
@@ -216,10 +217,12 @@ svg {
 }
 
 button {
+  margin: 0;
+  ;
   padding: 0;
   opacity: 80%;
   background-color: transparent;
-  border: none;
+  /* border: none; */
 }
 
 button:hover {
@@ -227,39 +230,31 @@ button:hover {
 }
 
 .btn-pop {
+  margin: 0;
   cursor: pointer;
-  -webkit-transform: scale(100%);
-  -ms-transform: scale(100%);
-  transform: scale(100%);
-  -webkit-transition: ease-out 0.1s;
-  -o-transition: ease-out 0.1s;
+  /* transform: scale(100%); */
   transition: ease-out 0.1s;
+  border: 1px solid red;
 }
 
 .btn-pop:hover {
-  -webkit-transform: scale(120%);
-  -ms-transform: scale(120%);
   transform: scale(120%);
 }
 
 .btn-pop:active {
-  -webkit-transform: scale(105%);
-  -ms-transform: scale(105%);
   transform: scale(105%);
 }
 
 .btn-img {
-  padding: 0;
-  height: auto;
-  width: 100%;
+  height: 2rem;
+  width: 2rem;
 }
 
 footer {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 2rem;
-  margin: auto 1rem 1rem 2rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 0 2rem 0 2rem;
 }
 
 footer p,
@@ -267,12 +262,17 @@ footer a {
   font-size: 1rem;
 }
 
-.footer-right {
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.header-right {
+  flex-direction: row;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   right: 0;
   margin: 0 0 0 auto;
@@ -283,19 +283,19 @@ footer a {
 }
 
 @media (orientation: portrait) {
+  .header-right {
+    flex-direction: column-reverse;
+  }
+
   .flex-wrapper {
     margin: 3rem 3rem;
   }
 
   .right-col {
-    -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
   }
 
   button {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin: 0.2rem;
     opacity: 100%;
   }
 
@@ -311,13 +311,6 @@ footer a {
 
   #clock {
     position: absolute;
-    top: 4rem;
-    -webkit-transform: translate(50%, 0%) scale(110%);
-    -ms-transform: translate(50%, 0%) scale(110%);
     transform: translate(50%, 0%) scale(110%);
-  }
-
-  footer {
-    margin-bottom: 2rem;
   }
 }

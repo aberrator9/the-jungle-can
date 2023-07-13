@@ -26,6 +26,5 @@ function setTheme(matches) {
 }
 
 themeToggle.addEventListener('click', toggleTheme);
-// themeToggle.onclick = toggleTheme;
 
 init();

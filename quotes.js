@@ -39,6 +39,6 @@ function scrollToTop() {
     });
 }
 
-generateButton.onclick = getQuotes;
+generateButton.addEventListener('click', getQuotes);
 
 init();
