@@ -1,8 +1,8 @@
 const jungleQuote = document.getElementById('jungle-quote');
 const happenQuote = document.getElementById('happen-quote');
 const wonderlandQuote = document.getElementById('wonderland-quote');
-const generateButton = document.getElementById('generate-button');
-const prompt = document.getElementById('prompt');
+const generateButton = document.getElementById('generate-btn');
+const arrows = document.querySelectorAll('.arrow');
 
 function init() {
     if (localStorage.quote1 === undefined) {
@@ -23,7 +23,8 @@ async function getQuotes() {
         localStorage.quote2 = happenQuote.innerHTML = data.happen[Math.floor(Math.random() * data.happen.length)];
         localStorage.quote3 = wonderlandQuote.innerHTML = data.wonderland[Math.floor(Math.random() * data.wonderland.length)];
 
-        prompt.style.display = 'none';
+        arrows.forEach(a => a.style.display = 'none');
+
         scrollToTop();
     } catch (e) {
         console.log('Error:', e);
