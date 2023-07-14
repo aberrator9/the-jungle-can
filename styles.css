@@ -53,22 +53,21 @@ a {
   text-decoration: none;
 }
 
-svg {
-  fill: var(--light-text);
-  width: 100%;
-  /* border: 1px solid red; */
-}
-
-.dark-theme svg {
-  fill: var(--dark-text);
-}
-
 .dark-theme a:link {
   color: goldenrod;
 }
 
 .dark-theme a:visited {
   color: red;
+}
+
+svg {
+  fill: var(--light-text);
+  /* border: 1px solid red; */
+}
+
+.dark-theme svg {
+  fill: var(--dark-text);
 }
 
 .bg-img {
@@ -83,8 +82,9 @@ svg {
 }
 
 #clock {
-  top: 25vh;
-  right: -20%;
+  height: 90%;
+  top: 5vh;
+  right: 0;
   rotate: -45deg;
   -webkit-transform: translate(50%, -10%), rotate(-45deg);
   -ms-transform: translate(50%, -10%), rotate(-45deg);
@@ -123,11 +123,6 @@ svg {
   flex-grow: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
-}
-
-#theme-toggle {
-  height: 3rem;
-  width: 3rem;
 }
 
 .container {
@@ -217,24 +212,14 @@ svg {
 }
 
 button {
-  margin: 0;
-  ;
   padding: 0;
   opacity: 80%;
   background-color: transparent;
-  /* border: none; */
+  border: none;
 }
 
 button:hover {
   opacity: 100%;
-}
-
-.btn-pop {
-  margin: 0;
-  cursor: pointer;
-  /* transform: scale(100%); */
-  transition: ease-out 0.1s;
-  border: 1px solid red;
 }
 
 .btn-pop:hover {
@@ -245,9 +230,13 @@ button:hover {
   transform: scale(105%);
 }
 
-.btn-img {
+.btn-pop {
+  transition: ease-out 0.1s;
+  cursor: pointer;
   height: 2rem;
   width: 2rem;
+  margin: 0 0.4rem;
+  /* border: 1px solid green */
 }
 
 footer {
@@ -264,18 +253,11 @@ footer a {
 
 .header {
   position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.header-right {
-  flex-direction: row;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
+  flex-direction: row;
+  top: 1rem;
+  right: 2rem;
   align-items: center;
-  right: 0;
-  margin: 0 0 0 auto;
 }
 
 #kofi {
@@ -283,8 +265,14 @@ footer a {
 }
 
 @media (orientation: portrait) {
-  .header-right {
+  .header {
     flex-direction: column-reverse;
+    top: 1.6rem;
+    right: 1rem;
+  }
+
+  .btn-pop {
+    margin: 0.3rem 0;
   }
 
   .flex-wrapper {
