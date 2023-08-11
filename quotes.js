@@ -3,6 +3,8 @@ const happenQuote = document.getElementById('happen-quote');
 const wonderlandQuote = document.getElementById('wonderland-quote');
 const generateButton = document.getElementById('generate-btn');
 const arrows = document.querySelectorAll('.arrow');
+const rightCol = document.querySelector('.right-col');
+const title = document.getElementById('title');
 
 function init() {
     if (localStorage.quote1 === undefined) {
@@ -24,6 +26,10 @@ async function getQuotes() {
         localStorage.quote3 = wonderlandQuote.innerHTML = data.wonderland[Math.floor(Math.random() * data.wonderland.length)];
 
         arrows.forEach(a => a.style.display = 'none');
+        rightCol.style.display = 'block';
+        if (window.matchMedia('(orientation: portrait)').matches) {
+            title.style.display = 'none';
+        }
 
         scrollToTop();
     } catch (e) {
