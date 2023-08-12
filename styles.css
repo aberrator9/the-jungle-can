@@ -43,9 +43,10 @@ body.dark-theme {
 
 blockquote {
   margin: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.4rem;
   font-size: 2.2vw;
   background: transparent;
+
 }
 
 a {
@@ -57,12 +58,11 @@ a {
 }
 
 .dark-theme a:visited {
-  color: red;
+  color: rgb(196, 44, 44);
 }
 
 svg {
   fill: var(--light-text);
-  /* border: 1px solid red; */
 }
 
 .dark-theme svg {
@@ -71,23 +71,30 @@ svg {
 
 .bg-img {
   position: absolute;
-  opacity: 10%;
+  overflow: hidden;
+  opacity: 15%;
   pointer-events: none;
+}
+
+.dark-theme .bg-img {
+  opacity: 10%;
 }
 
 #title {
   visibility: visible;
-  height: auto;
-  max-width: 80%;
+  height: 90%;
+  max-width: 90%;
 }
 
 #clock {
+  position: fixed;
   top: 0%;
   right: -10%;
   -webkit-transform: scale(140%);
   -ms-transform: scale(140%);
   transform: scale(140%);
   rotate: -45deg;
+  /* border: 5px solid red; */
 }
 
 .flex-wrapper {
@@ -141,7 +148,6 @@ svg {
   transform: translate(0%, -45%);
   width: 2.5rem;
   stroke: var(--light-text);
-  /* border: 1px solid yellow; */
 }
 
 .right {
@@ -227,7 +233,7 @@ svg {
 }
 
 #generate-btn {
-  width: 4.4rem;
+  width: 4.2rem;
 }
 
 #generate-img {
@@ -278,7 +284,6 @@ button:hover {
   height: 2rem;
   width: 2rem;
   margin: 0 0.4rem;
-  /* border: 1px solid green */
 }
 
 .btn-pop:hover {
@@ -315,10 +320,7 @@ footer a {
   -ms-flex-direction: row;
   flex-direction: row;
   top: 1rem;
-  right: 2rem;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  right: 0;
 }
 
 #kofi {
@@ -331,16 +333,18 @@ footer a {
     -webkit-box-direction: reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
-    top: 1.6rem;
-    right: 1rem;
+    top: 4rem;
+    right: -1rem;
   }
 
   .btn-pop {
-    margin: 0.3rem 0;
+    margin: 0.2rem 0;
+    height: 1.9rem;
+    width: 1.9rem;
   }
 
   .flex-wrapper {
-    margin: 3rem 3rem;
+    margin: 4rem 3rem;
   }
 
   .flex-container {
@@ -363,6 +367,11 @@ footer a {
     flex-basis: 100%;
   }
 
+  .left-col {
+    margin: 0;
+    padding: 0;
+  }
+
   button {
     opacity: 100%;
   }
@@ -370,17 +379,23 @@ footer a {
   p,
   blockquote {
     margin-top: 0;
-    font-size: 4.2vw;
+    font-size: 4.6vw;
   }
 
   a {
-    font-size: 4.2vw;
+    font-size: 4.4vw;
   }
 
   #clock {
     position: absolute;
-    -webkit-transform: translate(50%, 0%) scale(110%);
-    -ms-transform: translate(50%, 0%) scale(110%);
-    transform: translate(50%, 0%) scale(110%);
+    -webkit-transform: translate(35%, 10%);
+    -ms-transform: translate(35%, 10%);
+    transform: translate(35%, 10%);
+    height: 110%;
+  }
+
+  footer p,
+  footer a {
+    font-size: 0.9rem;
   }
 }
