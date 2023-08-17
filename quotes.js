@@ -20,7 +20,6 @@ function init() {
 }
 
 async function getQuotes() {
-    console.log('generate button clicked');
     try {
         const response = await fetch(`./data/quotes.json`);
         const data = await response.json();
@@ -34,7 +33,6 @@ async function getQuotes() {
 
         if (window.matchMedia('(orientation: portrait)').matches) {
             title.style.display = 'none';
-            console.log('orientation click registered');
         }
 
         scrollToTop();

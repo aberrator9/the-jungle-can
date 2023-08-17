@@ -267,6 +267,7 @@ footer a {
 
   .right-col {
     margin-top: 2.5rem;
+    margin-bottom: 15vh;
     display: none;
     flex-basis: 100%;
     align-self: center;
