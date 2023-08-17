@@ -42,9 +42,9 @@ body.dark-theme {
 blockquote {
   margin: 1rem;
   margin-bottom: 2.4rem;
-  font-size: 2.2vw;
+  margin-top: 3rem;
+  font-size: 2.1vw;
   background: transparent;
-
 }
 
 a {
@@ -82,7 +82,6 @@ svg {
   position: relative;
   visibility: visible;
   max-width: 100%;
-  border: 1px solid purple;
   align-self: center;
 }
 
@@ -92,7 +91,6 @@ svg {
   right: -10%;
   transform: scale(140%);
   rotate: -45deg;
-  /* border: 5px solid orangered; */
 }
 
 .flex-wrapper {
@@ -112,7 +110,6 @@ svg {
   flex-shrink: 0;
   text-align: center;
   max-block-size: 90vh;
-  border: 1px solid blue;
 }
 
 .right-col {
@@ -120,7 +117,6 @@ svg {
   flex-basis: 60%;
   flex-grow: 1;
   flex-shrink: 1;
-  /* border: 1px solid red; */
 }
 
 .flex-container {
@@ -236,8 +232,6 @@ footer a {
 
 .header {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   flex-direction: row;
   top: 1rem;
@@ -245,9 +239,12 @@ footer a {
 }
 
 @media (orientation: portrait) {
-  .btn-pop {
-    height: 1.9rem;
-    width: 1.9rem;
+  .header {
+    right: 0;
+    top: 0;
+    margin: 2.5rem 0.2rem;
+    /* flex-direction: column-reverse; */
+    /* border: 1px solid yellow; */
   }
 
   .flex-wrapper {
@@ -256,22 +253,29 @@ footer a {
 
   .flex-container {
     position: fixed;
+    display: flex;
     bottom: 0;
-    top: auto;
     left: 50%;
-    transform: translate(-50%, 0%);
     transform: translate(-50%, 0%);
   }
 
+  #generate-btn {
+    position: relative;
+    bottom: 50%;
+    transform: translate(0%, -100%);
+  }
+
   .right-col {
+    margin-top: 2.5rem;
     display: none;
     flex-basis: 100%;
+    align-self: center;
   }
 
   .left-col {
     margin: 0;
     padding: 0;
-    max-block-size: 70%;
+    max-block-size: 70vh;
   }
 
   button {
@@ -289,7 +293,7 @@ footer a {
   }
 
   #clock {
-    position: absolute;
+    /* position: absolute; */
     transform: translate(35%, 10%);
     height: 110%;
     overflow: hidden;

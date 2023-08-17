@@ -5,6 +5,7 @@ const generateButton = document.getElementById('generate-btn');
 const arrows = document.querySelectorAll('.arrow');
 const rightCol = document.querySelector('.right-col');
 const title = document.getElementById('title');
+const orientationMediaQuery = window.matchMedia("(orientation: landscape)");
 
 function init() {
     if (localStorage.quote1 === undefined) {
@@ -14,9 +15,12 @@ function init() {
         happenQuote.innerHTML = localStorage.quote2;
         wonderlandQuote.innerHTML = localStorage.quote3;
     }
+
+    console.log('init');
 }
 
 async function getQuotes() {
+    console.log('generate button clicked');
     try {
         const response = await fetch(`./data/quotes.json`);
         const data = await response.json();
@@ -27,8 +31,10 @@ async function getQuotes() {
 
         arrows.forEach(a => a.style.display = 'none');
         rightCol.style.display = 'block';
+
         if (window.matchMedia('(orientation: portrait)').matches) {
             title.style.display = 'none';
+            console.log('orientation click registered');
         }
 
         scrollToTop();
@@ -47,5 +53,14 @@ function scrollToTop() {
 }
 
 generateButton.addEventListener('click', getQuotes);
+orientationMediaQuery.addEventListener("change", () => {
+    onOrientationChange(orientationMediaQuery);
+});
+
+function onOrientationChange(mediaQuery) {
+    title.style.display = 'block';
+    mediaQuery.matches ? rightCol.style.display = 'block' : rightCol.style.display = 'none';
+}
 
 init();
+onOrientationChange(orientationMediaQuery);
