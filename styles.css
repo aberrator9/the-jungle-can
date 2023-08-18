@@ -115,7 +115,7 @@ svg {
 .right-col {
   margin: 0 1rem;
   display: block;
-  flex-basis: 60%;
+  flex-basis: 59%;
   flex-grow: 1;
   flex-shrink: 1;
 }
