@@ -248,9 +248,7 @@ footer a {
 
 @media (orientation: portrait) {
   .header {
-    right: 0;
-    top: 0;
-    margin: 2.5rem 0.2rem;
+    margin: 1.5rem 0.2rem;
     /* flex-direction: column-reverse; */
     /* border: 1px solid yellow; */
   }
