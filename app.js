@@ -15,21 +15,18 @@ function init() {
         happenQuote.innerHTML = localStorage.quote2;
         wonderlandQuote.innerHTML = localStorage.quote3;
     }
-
-    console.log('init');
 }
 
+// Add missing quotes and format italics currently surrounded by '_' chars
 function fixQuotes(sentence) {
-    // Add missing quotes
     const blanks = [' ', '\n', '\r'];
     const beginningQuote = '“';
     const endingQuote = '”';
     const mysteryQuote = '"';
 
     let firstQuote = '';
-    let firstQuoteIdx = -1;
     let finalQuote = '';
-    let finalQuoteIdx = -1;
+    let italics = [];
 
     for (let i = 0; i < sentence.length; ++i) {
         if (sentence[i] === mysteryQuote) {
@@ -47,10 +44,20 @@ function fixQuotes(sentence) {
         if (sentence[i] === beginningQuote || sentence[i] === endingQuote) {
             if (firstQuote === '') {
                 firstQuote = sentence[i];
-                firstQuoteIdx = i;
             }
             finalQuote = sentence[i];
-            finalQuoteIdx = i;
+        }
+
+        if (sentence[i] === '_') {
+            italics.push(i);
+        }
+    }
+
+    for (let i = 0; i < italics.length; ++i) {
+        if (i % 2 === 0 && italics[i + 1]) {
+            const unitalicized = sentence.substring(italics[i], italics[i + 1] + 1);
+            const italicized = '<i>' + sentence.substring(italics[i] + 1, italics[i + 1]) + '</i>';
+            sentence = sentence.replace(unitalicized, italicized);
         }
     }
 
@@ -60,13 +67,6 @@ function fixQuotes(sentence) {
     if (finalQuote === beginningQuote) {
         sentence += endingQuote;
     }
-
-    console.log('Debug - firstQuote:', firstQuote);
-    console.log('Debug - firstQuoteIdx:', firstQuoteIdx);
-    console.log('Debug - finalQuote:', finalQuote);
-    console.log('Debug - finalQuoteIdx:', finalQuoteIdx);
-
-    // Add italics
 
     return sentence;
 }
