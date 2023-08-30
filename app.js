@@ -30,14 +30,10 @@ function fixQuotes(sentence) {
 
     for (let i = 0; i < sentence.length; ++i) {
         if (sentence[i] === mysteryQuote) {
-            if (i === 0) {
-                sentence = sentence.replaceAt(i, beginningQuote);
-            } else if (i === sentence.length - 1) {
-                sentence = sentence.replaceAt(i, endingQuote);
-            } else if (blanks.includes(sentence[i - 1])) {
-                sentence = sentence.replaceAt(i, beginningQuote);
-            } else if (blanks.includes(sentence[i + 1])) {
-                sentence = sentence.replaceAt(i, endingQuote);
+            if (i === 0 || blanks.includes(sentence[i - 1])) {
+                sentence = sentence.replace(sentence[i], beginningQuote);
+            } else if (i === sentence.length - 1 || blanks.includes(sentence[i + 1])) {
+                sentence = sentence.replace(sentence[i], endingQuote);
             }
         }
 
@@ -69,10 +65,6 @@ function fixQuotes(sentence) {
     }
 
     return sentence;
-}
-
-String.prototype.replaceAt = function (index, replacement) {
-    return this.substring(0, index) + replacement + this.substring(index + replacement.length);
 }
 
 async function getQuotes() {
