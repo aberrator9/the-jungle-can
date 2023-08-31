@@ -12,11 +12,7 @@ function init() {
     const cachedQuotesJson = localStorage.getItem('cachedQuotesJson');
     loadingSpinner.style.display = 'flexbox';
 
-    // generateButton.style.display = 'block';
-
-
     if (cachedQuotesJson) {
-        console.log('cachedQuotesJson');
         loadingSpinner.style.display = 'none';
         generateButton.style.display = 'inline-block';
 
@@ -40,11 +36,13 @@ async function getQuotes() {
 
         if (cachedQuotesJson) {
             const cachedQuotes = JSON.parse(cachedQuotesJson);
-
             setQuotes(cachedQuotes);
         } else {
             const response = await fetch(`./data/quotes.json`);
             const data = await response.json();
+
+            loadingSpinner.style.display = 'none';
+            generateButton.style.display = 'inline-block';
 
             setQuotes(data);
 
@@ -62,7 +60,6 @@ function setQuotes(quotes) {
     localStorage.quote2 = happenQuote.innerHTML = fixQuotes(quotes.happen[Math.floor(Math.random() * quotes.happen.length)]);
     localStorage.quote3 = wonderlandQuote.innerHTML = fixQuotes(quotes.wonderland[Math.floor(Math.random() * quotes.wonderland.length)]);
 
-    arrows.forEach(a => a.style.display = 'none');
     rightCol.style.display = 'block';
 
     if (window.matchMedia('(orientation: portrait)').matches) {
@@ -130,7 +127,10 @@ function scrollToTop() {
     });
 }
 
-generateButton.addEventListener('click', getQuotes);
+generateButton.addEventListener('click', () => {
+    arrows.forEach(a => a.style.display = 'none');
+    getQuotes();
+});
 orientationMediaQuery.addEventListener("change", () => {
     onOrientationChange(orientationMediaQuery);
 });
