@@ -2,6 +2,7 @@ const jungleQuote = document.getElementById('jungle-quote');
 const happenQuote = document.getElementById('happen-quote');
 const wonderlandQuote = document.getElementById('wonderland-quote');
 const generateButton = document.getElementById('generate-btn');
+const loadingSpinner = document.querySelector('.lds-dual-ring');
 const arrows = document.querySelectorAll('.arrow');
 const rightCol = document.querySelector('.right-col');
 const title = document.getElementById('title');
@@ -9,21 +10,28 @@ const orientationMediaQuery = window.matchMedia("(orientation: landscape)");
 
 function init() {
     const cachedQuotesJson = localStorage.getItem('cachedQuotesJson');
+    loadingSpinner.style.display = 'flexbox';
+
+    // generateButton.style.display = 'block';
+
 
     if (cachedQuotesJson) {
+        console.log('cachedQuotesJson');
+        loadingSpinner.style.display = 'none';
+        generateButton.style.display = 'inline-block';
+
         const cachedQuotes = JSON.parse(cachedQuotesJson);
 
         if (localStorage.quote1) {
-            jungleQuote.textContent = localStorage.quote1;
-            happenQuote.textContent = localStorage.quote2;
-            wonderlandQuote.textContent = localStorage.quote3;
+            jungleQuote.innerHTML = localStorage.quote1;
+            happenQuote.innerHTML = localStorage.quote2;
+            wonderlandQuote.innerHTML = localStorage.quote3;
         } else {
             setQuotes(cachedQuotes);
         }
     } else {
         getQuotes();
     }
-
 }
 
 async function getQuotes() {
@@ -32,6 +40,7 @@ async function getQuotes() {
 
         if (cachedQuotesJson) {
             const cachedQuotes = JSON.parse(cachedQuotesJson);
+
             setQuotes(cachedQuotes);
         } else {
             const response = await fetch(`./data/quotes.json`);
@@ -39,7 +48,6 @@ async function getQuotes() {
 
             setQuotes(data);
 
-            // Store quotes JSON in localStorage
             localStorage.setItem('cachedQuotesJson', JSON.stringify(data));
         }
     } catch (e) {
@@ -50,9 +58,9 @@ async function getQuotes() {
 
 function setQuotes(quotes) {
     // Fetch random quotes and apply post-processing
-    localStorage.quote1 = jungleQuote.textContent = fixQuotes(quotes.jungle[Math.floor(Math.random() * quotes.jungle.length)]);
-    localStorage.quote2 = happenQuote.textContent = fixQuotes(quotes.happen[Math.floor(Math.random() * quotes.happen.length)]);
-    localStorage.quote3 = wonderlandQuote.textContent = fixQuotes(quotes.wonderland[Math.floor(Math.random() * quotes.wonderland.length)]);
+    localStorage.quote1 = jungleQuote.innerHTML = fixQuotes(quotes.jungle[Math.floor(Math.random() * quotes.jungle.length)]);
+    localStorage.quote2 = happenQuote.innerHTML = fixQuotes(quotes.happen[Math.floor(Math.random() * quotes.happen.length)]);
+    localStorage.quote3 = wonderlandQuote.innerHTML = fixQuotes(quotes.wonderland[Math.floor(Math.random() * quotes.wonderland.length)]);
 
     arrows.forEach(a => a.style.display = 'none');
     rightCol.style.display = 'block';
