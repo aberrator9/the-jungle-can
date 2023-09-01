@@ -1,6 +1,7 @@
 const jungleQuote = document.getElementById('jungle-quote');
 const happenQuote = document.getElementById('happen-quote');
 const wonderlandQuote = document.getElementById('wonderland-quote');
+const infoButton = document.getElementById('info');
 const generateButton = document.getElementById('generate-btn');
 const loadingSpinner = document.querySelector('.lds-dual-ring');
 const arrows = document.querySelectorAll('.arrow');
@@ -64,6 +65,7 @@ function setQuotes(quotes) {
 
     if (window.matchMedia('(orientation: portrait)').matches) {
         title.style.display = 'none';
+        rightCol.style.display = 'block';
     }
 
     scrollToTop();
@@ -106,7 +108,6 @@ function fixQuotes(sentence) {
         if (i % 2 === 0 && italics[i + 1]) {
             const unitalicized = sentence.substring(italics[i], italics[i + 1] + 1);
             const italicized = '<i>' + sentence.substring(italics[i] + 1, italics[i + 1]) + '</i>';
-            console.log(unitalicized, italicized);
             sentence = sentence.replace(unitalicized, italicized);
         }
     }
@@ -133,7 +134,8 @@ generateButton.addEventListener('click', () => {
     arrows.forEach(a => a.style.display = 'none');
     getQuotes();
 });
-orientationMediaQuery.addEventListener("change", () => {
+
+orientationMediaQuery.addEventListener('change', () => {
     onOrientationChange(orientationMediaQuery);
 });
 
@@ -141,6 +143,14 @@ function onOrientationChange(mediaQuery) {
     title.style.display = 'block';
     mediaQuery.matches ? rightCol.style.display = 'block' : rightCol.style.display = 'none';
 }
+
+infoButton.addEventListener('click', () => {
+    setQuotes({
+        jungle: ['Welcome!'],
+        happen: ['<i>The Jungle Can’t Happen Here In Wonderland by Upton Sinclair Lewis Carroll</i> is a digital toy that collages random quotations from three classic works of literature. Each press of the snake compiles a trio of random excerpts, one from Upton Sinclair’s <i>The Jungle</i> (1906), Sinclair Lewis’s <i>It Can’t Happen Here</i> (1935), and Lewis Carroll’s <i>Alice in Wonderland (1865), respectively.'],
+        wonderland: ['This site was created by Holly Burdorff and Justin Linton in 2023; they were inspired by sites like <a href="https://literature-clock.jenevoldsen.com/">Literature Clock</a>, writers like <a href="http://www.ericlemay.org/">Eric LeMay</a>, and by the current state of the world. It was made possible by public domain projects like <a href="https://www.gutenberg.org/">Project Gutenberg</a> and <a href="https://www.oldbookillustrations.com/">Old Book Illustrations</a>. Holly and Justin would love to see your favorite text collages; tag them on <a href="https://www.instagram.com/thejunglecan/">Instagram</a>! If you’d like, you can <a href="https://ko-fi.com/thejunglecan">buy them a coffee</a>. Additionally, the source code for this project is available on <a href="https://github.com/aberrator9/the-jungle-can">Github</a>.']
+    });
+});
 
 init();
 onOrientationChange(orientationMediaQuery);
