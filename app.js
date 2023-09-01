@@ -101,10 +101,12 @@ function fixQuotes(sentence) {
         }
     }
 
-    for (let i = 0; i < italics.length; ++i) {
+    // Done end-to-beginning, because string length is mutated
+    for (let i = italics.length - 1; i >= 0; --i) {
         if (i % 2 === 0 && italics[i + 1]) {
             const unitalicized = sentence.substring(italics[i], italics[i + 1] + 1);
             const italicized = '<i>' + sentence.substring(italics[i] + 1, italics[i + 1]) + '</i>';
+            console.log(unitalicized, italicized);
             sentence = sentence.replace(unitalicized, italicized);
         }
     }
