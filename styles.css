@@ -177,23 +177,19 @@ svg {
 @-webkit-keyframes lds-dual-ring {
   0% {
     -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
   }
 
   100% {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
   }
 }
 
 @keyframes lds-dual-ring {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -206,7 +202,6 @@ svg {
 
 .right {
   position: relative;
-  top: 4px;
   right: 10px;
   -webkit-animation: 0.8s linear PointLeft infinite;
   animation: 0.8s linear PointLeft infinite;
@@ -215,33 +210,27 @@ svg {
 @-webkit-keyframes PointLeft {
   0% {
     -webkit-transform: translate(20%, -45%);
-    transform: translate(20%, -45%);
   }
 
   10% {
     -webkit-transform: translate(0%, -45%);
-    transform: translate(0%, -45%);
   }
 
   100% {
     -webkit-transform: translate(20%, -45%);
-    transform: translate(20%, -45%);
   }
 }
 
 @keyframes PointLeft {
   0% {
-    -webkit-transform: translate(20%, -45%);
     transform: translate(20%, -45%);
   }
 
   10% {
-    -webkit-transform: translate(0%, -45%);
     transform: translate(0%, -45%);
   }
 
   100% {
-    -webkit-transform: translate(20%, -45%);
     transform: translate(20%, -45%);
   }
 }
@@ -251,44 +240,36 @@ svg {
   -webkit-transform-origin: top;
   -ms-transform-origin: top;
   transform-origin: top;
-  top: 8px;
-  left: 0px;
-  rotate: 180deg;
+  left: 10px;
   -webkit-animation: 0.8s linear PointRight infinite;
   animation: 0.8s linear PointRight infinite;
 }
 
 @-webkit-keyframes PointRight {
   0% {
-    -webkit-transform: translate(0%, -45%);
-    transform: translate(0%, -45%);
+    -webkit-transform: translate(-20%, -45%);
   }
 
   10% {
-    -webkit-transform: translate(-20%, -45%);
-    transform: translate(-20%, -45%);
+    -webkit-transform: translate(0%, -45%);
   }
 
   100% {
-    -webkit-transform: translate(0%, -45%);
-    transform: translate(0%, -45%);
+    -webkit-transform: translate(-20%, -45%);
   }
 }
 
 @keyframes PointRight {
   0% {
-    -webkit-transform: translate(0%, -45%);
-    transform: translate(0%, -45%);
-  }
-
-  10% {
-    -webkit-transform: translate(-20%, -45%);
     transform: translate(-20%, -45%);
   }
 
-  100% {
-    -webkit-transform: translate(0%, -45%);
+  10% {
     transform: translate(0%, -45%);
+  }
+
+  100% {
+    transform: translate(-20%, -45%);
   }
 }
 
@@ -309,23 +290,19 @@ svg {
 @-webkit-keyframes Spin {
   0% {
     -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
   }
 
   100% {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
   }
 }
 
 @keyframes Spin {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -450,9 +427,9 @@ footer a {
   }
 
   #clock {
-    -webkit-transform: translate(45%, -8%) rotate(-45deg)scale(120%);
-    -ms-transform: translate(45%, -8%) rotate(-45deg)scale(120%);
-    transform: translate(45%, -8%) rotate(-45deg)scale(120%);
+    -webkit-transform: translate(45%, -8%) rotate(-45deg)scale(110%);
+    -ms-transform: translate(45%, -8%) rotate(-45deg)scale(110%);
+    transform: translate(45%, -8%) rotate(-45deg)scale(110%);
     height: 110%;
     overflow: hidden;
   }
