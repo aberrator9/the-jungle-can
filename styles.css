@@ -72,7 +72,7 @@ svg {
 .bg-img {
   position: absolute;
   overflow: hidden;
-  opacity: 15%;
+  opacity: 12%;
   pointer-events: none;
 }
 
@@ -92,10 +92,9 @@ svg {
   position: fixed;
   top: 0%;
   right: -10%;
-  -webkit-transform: scale(140%);
-  -ms-transform: scale(140%);
-  transform: scale(140%);
-  rotate: -45deg;
+  -webkit-transform: rotate(-45deg) scale(140%);
+  -ms-transform: rotate(-45deg) scale(140%);
+  transform: rotate(-45deg) scale(140%);
 }
 
 .flex-wrapper {
@@ -451,9 +450,9 @@ footer a {
   }
 
   #clock {
-    -webkit-transform: translate(35%, 10%);
-    -ms-transform: translate(35%, 10%);
-    transform: translate(35%, 10%);
+    -webkit-transform: translate(45%, -8%) rotate(-45deg)scale(120%);
+    -ms-transform: translate(45%, -8%) rotate(-45deg)scale(120%);
+    transform: translate(45%, -8%) rotate(-45deg)scale(120%);
     height: 110%;
     overflow: hidden;
   }
