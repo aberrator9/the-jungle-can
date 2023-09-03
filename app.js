@@ -31,6 +31,12 @@ function init() {
     }
 }
 
+async function DecompressBlob(blob) {
+    const ds = new DecompressionStream("gzip");
+    const decompressedStream = blob.stream().pipeThrough(ds);
+    return await new Response(decompressedStream).blob();
+}
+
 async function getQuotes() {
     try {
         const cachedQuotesJson = localStorage.getItem('cachedQuotesJson');
@@ -39,15 +45,21 @@ async function getQuotes() {
             const cachedQuotes = JSON.parse(cachedQuotesJson);
             setQuotes(cachedQuotes);
         } else {
-            const response = await fetch(`./data/quotes.json`);
-            const data = await response.json();
+            const response = await fetch(`./data/quotes.json.gz`);
+            const blob = await response.blob();
+            const decompressedBlob = await DecompressBlob(blob); // Decompress the blob
+
+            // Convert the decompressedBlob into a JSON object
+            const json = await new Response(decompressedBlob).json();
+            console.log(json);
 
             loadingSpinner.style.display = 'none';
             generateButton.style.display = 'inline-block';
 
-            setQuotes(data);
+            setQuotes(json);
 
-            localStorage.setItem('cachedQuotesJson', JSON.stringify(data));
+            // Store the JSON string in local storage
+            localStorage.setItem('cachedQuotesJson', JSON.stringify(json));
         }
     } catch (e) {
         console.log('Error:', e);
