@@ -47,19 +47,15 @@ async function getQuotes() {
         } else {
             const response = await fetch(`./data/quotes.json.gz`);
             const blob = await response.blob();
-            const decompressedBlob = await DecompressBlob(blob); // Decompress the blob
-
-            // Convert the decompressedBlob into a JSON object
+            const decompressedBlob = await DecompressBlob(blob);
             const json = await new Response(decompressedBlob).json();
-            console.log(json);
+
+            localStorage.setItem('cachedQuotesJson', JSON.stringify(json));
 
             loadingSpinner.style.display = 'none';
             generateButton.style.display = 'inline-block';
 
             setQuotes(json);
-
-            // Store the JSON string in local storage
-            localStorage.setItem('cachedQuotesJson', JSON.stringify(json));
         }
     } catch (e) {
         console.log('Error:', e);
@@ -69,9 +65,9 @@ async function getQuotes() {
 
 function setQuotes(quotes) {
     // Fetch random quotes and apply post-processing
-    localStorage.quote1 = jungleQuote.innerHTML = fixQuotes(quotes.jungle[Math.floor(Math.random() * quotes.jungle.length)]);
-    localStorage.quote2 = happenQuote.innerHTML = fixQuotes(quotes.happen[Math.floor(Math.random() * quotes.happen.length)]);
-    localStorage.quote3 = wonderlandQuote.innerHTML = fixQuotes(quotes.wonderland[Math.floor(Math.random() * quotes.wonderland.length)]);
+    localStorage.quote1 = jungleQuote.innerHTML = fixQuote(quotes.jungle[Math.floor(Math.random() * quotes.jungle.length)]);
+    localStorage.quote2 = happenQuote.innerHTML = fixQuote(quotes.happen[Math.floor(Math.random() * quotes.happen.length)]);
+    localStorage.quote3 = wonderlandQuote.innerHTML = fixQuote(quotes.wonderland[Math.floor(Math.random() * quotes.wonderland.length)]);
 
     rightCol.style.display = 'block';
 
@@ -84,7 +80,7 @@ function setQuotes(quotes) {
 }
 
 // Add missing quotes and format italics currently surrounded by '_' chars
-function fixQuotes(sentence) {
+function fixQuote(sentence) {
     const blanks = [' ', '\n', '\r'];
     const beginningQuote = '“';
     const endingQuote = '”';
