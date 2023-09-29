@@ -11,7 +11,5 @@ This site was created by Holly Burdorff and Justin Linton in 2023.
 - Built-in dark mode toggle
 
 ## Screenshots
-<img src="https://github.com/aberrator9/the-jungle-can/assets/127802772/2f458c58-1ca7-46f0-8a3c-d4430eda644b" width="480" />
 <img src="https://github.com/aberrator9/the-jungle-can/assets/127802772/17fceec4-18dd-4488-a42d-972033079984" width="480" />
-<img src="https://github.com/aberrator9/the-jungle-can/assets/127802772/7d378640-3988-44df-8342-0c6105cae7af" width="240" />
-<img src="https://github.com/aberrator9/the-jungle-can/assets/127802772/d2064228-a7a2-4c1b-bd43-6e641b555af6" width="240" />
+<img src="https://github.com/aberrator9/the-jungle-can/assets/127802772/7d378640-3988-44df-8342-0c6105cae7af" width="200" />
