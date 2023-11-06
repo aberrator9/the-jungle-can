@@ -63,11 +63,17 @@ async function getQuotes() {
     }
 }
 
-function setQuotes(quotes) {
+function setQuotes(quotes, info = false) {
     // Fetch random quotes and apply post-processing
-    localStorage.quote1 = jungleQuote.innerHTML = fixQuote(quotes.jungle[Math.floor(Math.random() * quotes.jungle.length)]);
-    localStorage.quote2 = happenQuote.innerHTML = fixQuote(quotes.happen[Math.floor(Math.random() * quotes.happen.length)]);
-    localStorage.quote3 = wonderlandQuote.innerHTML = fixQuote(quotes.wonderland[Math.floor(Math.random() * quotes.wonderland.length)]);
+    if(!info) {
+        localStorage.quote1 = jungleQuote.innerHTML = fixQuote(quotes.jungle[Math.floor(Math.random() * quotes.jungle.length)]);
+        localStorage.quote2 = happenQuote.innerHTML = fixQuote(quotes.happen[Math.floor(Math.random() * quotes.happen.length)]);
+        localStorage.quote3 = wonderlandQuote.innerHTML = fixQuote(quotes.wonderland[Math.floor(Math.random() * quotes.wonderland.length)]);
+    } else {
+        localStorage.quote1 = jungleQuote.innerHTML = quotes.jungle;
+        localStorage.quote2 = happenQuote.innerHTML = quotes.happen;
+        localStorage.quote3 = wonderlandQuote.innerHTML = quotes.wonderland;
+    }
 
     rightCol.style.display = 'block';
 
@@ -155,9 +161,9 @@ function onOrientationChange(mediaQuery) {
 infoButton.addEventListener('click', () => {
     setQuotes({
         jungle: ['<i>The Jungle Can’t Happen Here In Wonderland</i> is a digital toy that collages random quotations from three classic works of literature. Each press of the snake compiles a trio of random excerpts, one from Upton Sinclair’s <i>The Jungle</i> (1906), Sinclair Lewis’s <i>It Can’t Happen Here</i> (1935), and Lewis Carroll’s <i>Alice in Wonderland (1865), respectively.'],
-        happen: ['This site was created by Holly Burdorff and Justin Linton in 2023; they were inspired by sites like <a href="https://literature-clock.jenevoldsen.com/">Literature Clock</a>, writers like <a href="http://www.ericlemay.org/">Eric LeMay</a>, and by the current state of the world. It was made possible by public domain projects like <a href="https://www.gutenberg.org/">Project Gutenberg</a> and <a href="https://www.oldbookillustrations.com/">Old Book Illustrations</a>. Holly and Justin would love to see your favorite text collages; tag them on <a href="https://www.instagram.com/thejunglecan/">Instagram</a>! If you’d like, you can <a href="https://ko-fi.com/thejunglecan">buy them a coffee</a>. Additionally, the source code for this project is available on <a href="https://github.com/aberrator9/the-jungle-can">Github</a>.'],
+        happen: ['This site was created by Holly Burdorff and Justin Linton in 2023; they were inspired by sites like <a href="https://literature-clock.jenevoldsen.com/" target="_blank" rel="noopener noreferrer">Literature Clock</a>, writers like <a href="http://www.ericlemay.org/" target="_blank" rel="noopener noreferrer">Eric LeMay</a>, and by the current state of the world. It was made possible by public domain projects like <a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg</a> and <a href="https://www.oldbookillustrations.com/" target="_blank" rel="noopener noreferrer">Old Book Illustrations</a>. Holly and Justin would love to see your favorite text collages; tag them on <a href="https://www.instagram.com/thejunglecan/" target="_blank" rel="noopener noreferrer">Instagram</a>! If you’d like, you can <a href="https://ko-fi.com/thejunglecan" target="_blank" rel="noopener noreferrer">buy them a coffee</a>. Additionally, the source code for this project is available on <a href="https://github.com/aberrator9/the-jungle-can" target="_blank" rel="noopener noreferrer">Github</a>. Snake icon by <a href="https://game-icons.net/" target="_blank" rel="noopener noreferrer">GameIcons.net</a> in CC Attribution License via <a href="https://www.svgrepo.com/" target="_blank" rel="noopener noreferrer">SVG Repo</a>.'],
         wonderland: ['Content note: these historical works are presented in their entirety and contain some unpleasantness.']
-    });
+    }, true);
 });
 
 init();
