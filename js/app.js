@@ -87,7 +87,7 @@ function setQuotes(quotes, info = false) {
 
 // Add missing quotes and format italics currently surrounded by '_' chars
 function fixQuote(sentence) {
-    const blanks = [' ', '\n', '\r'];
+    const blanks = [' ', '\n', '\r', '\t'];
     const beginningQuote = '“';
     const endingQuote = '”';
     const mysteryQuote = '"';
@@ -119,6 +119,8 @@ function fixQuote(sentence) {
 
     // Done end-to-beginning, because string length is mutated
     for (let i = italics.length - 1; i >= 0; --i) {
+        if(i === 0 && italics.length)
+
         if (i % 2 === 0 && italics[i + 1]) {
             const unitalicized = sentence.substring(italics[i], italics[i + 1] + 1);
             const italicized = '<i>' + sentence.substring(italics[i] + 1, italics[i + 1]) + '</i>';
@@ -144,27 +146,35 @@ function scrollToTop() {
     });
 }
 
-generateButton.addEventListener('click', () => {
-    arrows.forEach(a => a.style.display = 'none');
-    getQuotes();
-});
+document.addEventListener('DOMContentLoaded', function () {
+  
+    function onOrientationChange(mediaQuery) {
+        title.style.display = 'block';
+        mediaQuery.matches ? rightCol.style.display = 'block' : rightCol.style.display = 'none';
+    }
 
-orientationMediaQuery.addEventListener('change', () => {
+    orientationMediaQuery.addEventListener('change', () => {
+        onOrientationChange(orientationMediaQuery);
+    });
+    
     onOrientationChange(orientationMediaQuery);
+
+    infoButton.addEventListener('click', () => {
+        setQuotes({
+            jungle: ['<i>The Jungle Can’t Happen Here In Wonderland</i> is a digital toy that collages random quotations from three classic works of literature. Each press of the snake compiles a trio of random excerpts, one from Upton Sinclair’s <i>The Jungle</i> (1906), Sinclair Lewis’s <i>It Can’t Happen Here</i> (1935), and Lewis Carroll’s <i>Alice in Wonderland (1865), respectively.'],
+            happen: ['This site was created by Holly Burdorff and Justin Linton in 2023; they were inspired by sites like <a href="https://literature-clock.jenevoldsen.com/" target="_blank" rel="noopener noreferrer">Literature Clock</a>, writers like <a href="http://www.ericlemay.org/" target="_blank" rel="noopener noreferrer">Eric LeMay</a>, and by the current state of the world. It was made possible by public domain projects like <a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg</a> and <a href="https://www.oldbookillustrations.com/" target="_blank" rel="noopener noreferrer">Old Book Illustrations</a>. Holly and Justin would love to see your favorite text collages; tag them on <a href="https://www.instagram.com/thejunglecan/" target="_blank" rel="noopener noreferrer">Instagram</a>! If you’d like, you can <a href="https://ko-fi.com/thejunglecan" target="_blank" rel="noopener noreferrer">buy them a coffee</a>. Additionally, the source code for this project is available on <a href="https://github.com/aberrator9/the-jungle-can" target="_blank" rel="noopener noreferrer">Github</a>. Snake icon by <a href="https://game-icons.net/" target="_blank" rel="noopener noreferrer">GameIcons.net</a> in CC Attribution License via <a href="https://www.svgrepo.com/" target="_blank" rel="noopener noreferrer">SVG Repo</a>.'],
+            wonderland: ['Content note: these historical works are presented in their entirety and contain some unpleasantness.']
+        }, true);
+    });
+
+    generateButton.addEventListener('click', () => {
+        arrows.forEach(a => a.style.display = 'none');
+        getQuotes();
+    });
+
+    init();
+
 });
 
-function onOrientationChange(mediaQuery) {
-    title.style.display = 'block';
-    mediaQuery.matches ? rightCol.style.display = 'block' : rightCol.style.display = 'none';
-}
 
-infoButton.addEventListener('click', () => {
-    setQuotes({
-        jungle: ['<i>The Jungle Can’t Happen Here In Wonderland</i> is a digital toy that collages random quotations from three classic works of literature. Each press of the snake compiles a trio of random excerpts, one from Upton Sinclair’s <i>The Jungle</i> (1906), Sinclair Lewis’s <i>It Can’t Happen Here</i> (1935), and Lewis Carroll’s <i>Alice in Wonderland (1865), respectively.'],
-        happen: ['This site was created by Holly Burdorff and Justin Linton in 2023; they were inspired by sites like <a href="https://literature-clock.jenevoldsen.com/" target="_blank" rel="noopener noreferrer">Literature Clock</a>, writers like <a href="http://www.ericlemay.org/" target="_blank" rel="noopener noreferrer">Eric LeMay</a>, and by the current state of the world. It was made possible by public domain projects like <a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg</a> and <a href="https://www.oldbookillustrations.com/" target="_blank" rel="noopener noreferrer">Old Book Illustrations</a>. Holly and Justin would love to see your favorite text collages; tag them on <a href="https://www.instagram.com/thejunglecan/" target="_blank" rel="noopener noreferrer">Instagram</a>! If you’d like, you can <a href="https://ko-fi.com/thejunglecan" target="_blank" rel="noopener noreferrer">buy them a coffee</a>. Additionally, the source code for this project is available on <a href="https://github.com/aberrator9/the-jungle-can" target="_blank" rel="noopener noreferrer">Github</a>. Snake icon by <a href="https://game-icons.net/" target="_blank" rel="noopener noreferrer">GameIcons.net</a> in CC Attribution License via <a href="https://www.svgrepo.com/" target="_blank" rel="noopener noreferrer">SVG Repo</a>.'],
-        wonderland: ['Content note: these historical works are presented in their entirety and contain some unpleasantness.']
-    }, true);
-});
-
-init();
-onOrientationChange(orientationMediaQuery);
+module.exports = { fixQuote };
