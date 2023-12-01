@@ -65,7 +65,7 @@ async function getQuotes() {
 
 function setQuotes(quotes, info = false) {
     // Fetch random quotes and apply post-processing
-    if(!info) {
+    if (!info) {
         localStorage.quote1 = jungleQuote.innerHTML = fixQuote(quotes.jungle[Math.floor(Math.random() * quotes.jungle.length)]);
         localStorage.quote2 = happenQuote.innerHTML = fixQuote(quotes.happen[Math.floor(Math.random() * quotes.happen.length)]);
         localStorage.quote3 = wonderlandQuote.innerHTML = fixQuote(quotes.wonderland[Math.floor(Math.random() * quotes.wonderland.length)]);
@@ -86,18 +86,21 @@ function setQuotes(quotes, info = false) {
 }
 
 function fixQuote(sentence) {
-    const blanks = [' ', '\n', '\r'];
+    // Replace mystery quotes, format italics, strip white space
+    sentence = sentence
+    .replace(/"(?=\b)/g, '“')
+    .replace(/(?=\b)"/g, '”')
+    .replace(/(?=\b)_/g, '<i>')
+    .replace(/_(?=\b)/g, '</i>')
+    .replace(/\s+/g, ' ')
+    .replace(/^\s+|\s+$/g, '');
+    
+    // Add missing quotes
     const beginningQuote = '“';
     const endingQuote = '”';
-    const mysteryQuote = '"';
 
     let firstQuote = '';
     let finalQuote = '';
-    let italics = [];
-
-    // Replace mystery quotes
-    sentence = sentence.replace(/"(?=\b)/g, '“');
-    sentence = sentence.replace(/(?=\b)"/g, '”');
 
     for (let i = 0; i < sentence.length; ++i) {
         if (sentence[i] === beginningQuote || sentence[i] === endingQuote) {
@@ -108,21 +111,12 @@ function fixQuote(sentence) {
         }
     }
 
-    // Format italics
-    sentence = sentence.replace(/(?=\s)_/, '<i>');
-    sentence = sentence.replace(/_(?=\s)/, '</i>');
-
-    // Add missing quotes
     if (firstQuote === endingQuote) {
         sentence = beginningQuote + sentence;
     }
     if (finalQuote === beginningQuote) {
         sentence += endingQuote;
     }
-
-    // Strip spacing characters and trim
-    sentence = sentence.replace(/\s+/g, ' ');
-    sentence = sentence.replace(/^\s+|\s+$/g, '');
 
     return sentence;
 }
@@ -136,7 +130,7 @@ function scrollToTop() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  
+
     function onOrientationChange(mediaQuery) {
         title.style.display = 'block';
         mediaQuery.matches ? rightCol.style.display = 'block' : rightCol.style.display = 'none';
@@ -145,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
     orientationMediaQuery.addEventListener('change', () => {
         onOrientationChange(orientationMediaQuery);
     });
-    
+
     onOrientationChange(orientationMediaQuery);
 
     infoButton.addEventListener('click', () => {
