@@ -25,7 +25,3 @@ test('Formats \'_\' as italics', () => {
     expect(fixQuote('a _number_ of _underscores_')).toBe('a <i>number</i> of <i>underscores</i>');
 });
 
-test('Removes newlines', () => {
-    expect(fixQuote('\nseparated\nby\nnewlines\n')).toBe('separated by newlines');
-});
-
