@@ -13,6 +13,10 @@ test('Replaces ambiguous quote characters', () => {
     expect(fixQuote('String with "ambiguous quotes"')).toBe('String with “ambiguous quotes”');
 });
 
+test('Adds missing quote characters', () => {
+    expect(fixQuote('String" with “missing quotes')).toBe('“String” with “missing quotes”');
+});
+
 test('Removes spacing characters and trims beginning and end', () => {
     expect(fixQuote('\n\r\tseparated\nby\t\rspacing\n\t')).toBe('separated by spacing');
 });
