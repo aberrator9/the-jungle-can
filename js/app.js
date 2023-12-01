@@ -85,9 +85,8 @@ function setQuotes(quotes, info = false) {
     scrollToTop();
 }
 
-// Add missing quotes and format italics currently surrounded by '_' chars
 function fixQuote(sentence) {
-    const blanks = [' ', '\n', '\r', '\t'];
+    const blanks = [' ', '\n', '\r'];
     const beginningQuote = '“';
     const endingQuote = '”';
     const mysteryQuote = '"';
@@ -119,9 +118,9 @@ function fixQuote(sentence) {
 
     // Done end-to-beginning, because string length is mutated
     for (let i = italics.length - 1; i >= 0; --i) {
-        if(i === 0 && italics.length)
-
-        if (i % 2 === 0 && italics[i + 1]) {
+        if(i === italics.length - 1 && italics % 2 != 0){
+            sentence = sentence.replace(italics[italics.length - 1], '');
+        } else if (i % 2 === 0 && italics[i + 1]) {
             const unitalicized = sentence.substring(italics[i], italics[i + 1] + 1);
             const italicized = '<i>' + sentence.substring(italics[i] + 1, italics[i + 1]) + '</i>';
             sentence = sentence.replace(unitalicized, italicized);
@@ -134,6 +133,10 @@ function fixQuote(sentence) {
     if (finalQuote === beginningQuote) {
         sentence += endingQuote;
     }
+
+    // Strip spacing characters and trim
+    sentence = sentence.replace(/\s+/g, ' ');
+    sentence = sentence.replace(/^\s+|\s+$/g, '');
 
     return sentence;
 }
