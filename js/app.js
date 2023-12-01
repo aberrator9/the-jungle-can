@@ -95,38 +95,24 @@ function fixQuote(sentence) {
     let finalQuote = '';
     let italics = [];
 
-    for (let i = 0; i < sentence.length; ++i) {
-        if (sentence[i] === mysteryQuote) {
-            if (i === 0 || blanks.includes(sentence[i - 1])) {
-                sentence = sentence.replace(sentence[i], beginningQuote);
-            } else if (i === sentence.length - 1 || blanks.includes(sentence[i + 1])) {
-                sentence = sentence.replace(sentence[i], endingQuote);
-            }
-        }
+    // Replace mystery quotes
+    sentence = sentence.replace(/"(?=\b)/g, '“');
+    sentence = sentence.replace(/(?=\b)"/g, '”');
 
+    for (let i = 0; i < sentence.length; ++i) {
         if (sentence[i] === beginningQuote || sentence[i] === endingQuote) {
             if (firstQuote === '') {
                 firstQuote = sentence[i];
             }
             finalQuote = sentence[i];
         }
-
-        if (sentence[i] === '_') {
-            italics.push(i);
-        }
     }
 
-    // Done end-to-beginning, because string length is mutated
-    for (let i = italics.length - 1; i >= 0; --i) {
-        if(i === italics.length - 1 && italics % 2 != 0){
-            sentence = sentence.replace(italics[italics.length - 1], '');
-        } else if (i % 2 === 0 && italics[i + 1]) {
-            const unitalicized = sentence.substring(italics[i], italics[i + 1] + 1);
-            const italicized = '<i>' + sentence.substring(italics[i] + 1, italics[i + 1]) + '</i>';
-            sentence = sentence.replace(unitalicized, italicized);
-        }
-    }
+    // Format italics
+    sentence = sentence.replace(/(?=\s)_/, '<i>');
+    sentence = sentence.replace(/_(?=\s)/, '</i>');
 
+    // Add missing quotes
     if (firstQuote === endingQuote) {
         sentence = beginningQuote + sentence;
     }
