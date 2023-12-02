@@ -88,13 +88,13 @@ function setQuotes(quotes, info = false) {
 function fixQuote(sentence) {
     // Replace mystery quotes, format italics, strip white space
     sentence = sentence
-    .replace(/"(?=\b)/g, '“')
-    .replace(/(?=\b)"/g, '”')
-    .replace(/(?=\b)_/g, '<i>')
-    .replace(/_(?=\b)/g, '</i>')
-    .replace(/\s+/g, ' ')
-    .replace(/^\s+|\s+$/g, '');
-    
+        .replace(/"(?=\b)/g, '“')
+        .replace(/(?=\b)"/g, '”')
+        .replace(/(?=\b)_/g, '<i>')
+        .replace(/_(?=\b)/g, '</i>')
+        .replace(/\s+/g, ' ')
+        .replace(/^\s+|\s+$/g, '');
+
     // Add missing quotes
     const beginningQuote = '“';
     const endingQuote = '”';
