@@ -129,19 +129,19 @@ function scrollToTop() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded',  () => {
 
     function onOrientationChange(mediaQuery) {
         title.style.display = 'block';
         mediaQuery.matches ? rightCol.style.display = 'block' : rightCol.style.display = 'none';
     }
-
+    
     orientationMediaQuery.addEventListener('change', () => {
         onOrientationChange(orientationMediaQuery);
     });
 
     onOrientationChange(orientationMediaQuery);
-
+    
     infoButton.addEventListener('click', () => {
         setQuotes({
             jungle: ['<i>The Jungle Can’t Happen Here In Wonderland</i> is a digital toy that collages random quotations from three classic works of literature. Each press of the snake compiles a trio of random excerpts, one from Upton Sinclair’s <i>The Jungle</i> (1906), Sinclair Lewis’s <i>It Can’t Happen Here</i> (1935), and Lewis Carroll’s <i>Alice in Wonderland (1865), respectively.'],
@@ -149,15 +149,16 @@ document.addEventListener('DOMContentLoaded', function () {
             wonderland: ['Content note: these historical works are presented in their entirety and contain some unpleasantness.']
         }, true);
     });
-
+    
     generateButton.addEventListener('click', () => {
         arrows.forEach(a => a.style.display = 'none');
         getQuotes();
     });
-
+    
     init();
 
 });
+    
 
 // For Jest testing
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
