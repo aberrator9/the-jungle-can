@@ -159,5 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-module.exports = { fixQuote };
+// For Jest testing
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = { fixQuote };
+}
